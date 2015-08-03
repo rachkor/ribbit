@@ -1,5 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<div class="page-header">
+  <h1><a href="<%= @link.url %>"><%= @link.title %></a> <small>Submitted by <%#= link.user.name %></small></h1>
+</div>
+
+<div class="btn-group">
+  <%= link_to "Hop over", @link.url, class: "btn btn-primary" %>
+  <% if @link.user_id == current_user.id %>
+    <%= link_to "Edit Ribbit", edit_link_path, class: "btn btn-default" %>
+    <%= link_to "Delete Ribbit", @link, method: :delete, data: { confirm: 'Are you sure? This link will croak permanently.'}, class: "btn btn-default" %>
+  <% end %>
+</div>
+
+<div class="btn-group pull-right">
+  <%#= link_to like_link_path(@link), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%#= @link.get_upvotes.size %>
+  <%# end %>
+  <%#= link_to dislike_link_path(@link), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%#= @link.get_downvotes.size %>
+  <%# end %>
+</div>
+
 <p>
   <strong>Title:</strong>
   <%= @link.title %>
