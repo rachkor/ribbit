@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Links</h1>
+<% if user_signed_in? %>
+<%= link_to 'Account', edit_user_registration_path %>
+<%= link_to 'Log Out', destroy_user_session_path %>
+
+<% else %>
+<%= link_to 'New Ribbiter', new_user_registration_path %>
+<%= link_to 'Returning Ribbiter', new_user_session_path %> 
+<% end %>
+
+
+
+<h1>Recent Ribbits</h1>
 
 <table>
   <thead>
@@ -25,5 +36,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Link', new_link_path %>
+<% if user_signed_in? %>
+<%= link_to 'New Ribbit', new_link_path %>
+<% end %> 
